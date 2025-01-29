@@ -28,7 +28,7 @@ def min_value_node(node: Node):
     current = node
     while current.left:
         current = current.left
-    return current
+    return current.val
 
 
 def max_value_node(node: Node):
@@ -38,7 +38,9 @@ def max_value_node(node: Node):
     return current.val
 
 
-def preorder_traversal(root: Node, path: list = []):
+def preorder_traversal(root: Node, path=None):
+    if path is None:
+        path = []
     if root:
         path.append(root.val)
         preorder_traversal(root.left, path)
@@ -76,8 +78,7 @@ root = insert(root, 4)
 root = insert(root, 7)
 root = insert(root, 6)
 root = insert(root, 8)
-root = delete(root, 7)
 
-print(min_value_node(root).val)
+print(min_value_node(root))
 print(max_value_node(root))
 print(preorder_traversal(root))
